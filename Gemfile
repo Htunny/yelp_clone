@@ -41,6 +41,7 @@ group :development, :test do
   gem 'shoulda'
   gem 'rspec-collection_matchers'
   gem 'devise'
+  gem 'omniauth-facebook'
 end
 
 group :development do
