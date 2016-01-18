@@ -43,4 +43,17 @@ feature 'restaurants' do
       expect(current_path).to eq "/restaurants/#{hawksmoor.id}"
     end
   end
+
+  context 'editing restaurants' do
+    before {Restaurant.create name: "Hawksmoor"}
+
+    scenario 'let user edit a restaurant' do
+      visit '/restaurants'
+      click_link 'Edit Hawksmoor'
+      fill_in 'Name', with: 'The Hawksmoor'
+      click_button 'Update Restaurant'
+      expect(page).to have_content 'The Hawksmoor'
+      expect(current_path).to eq '/restaurants'
+    end
+  end
 end
