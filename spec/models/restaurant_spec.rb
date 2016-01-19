@@ -15,4 +15,6 @@ RSpec.describe Restaurant, type: :model do
     restaurant = Restaurant.new(name: "KFC")
     expect(restaurant).to have(1).error_on(:name)
   end
+
+
 end

@@ -24,6 +24,12 @@ feature 'restaurants' do
   context 'creating restaurants' do
     scenario 'promts user to fill out a form, then displays the new restaurant' do
       visit '/restaurants'
+      click_link 'Sign up'
+      fill_in 'Email', with: 'steve@email.com'
+      fill_in 'Password', with: '12345678'
+      fill_in 'Password confirmation', with: '12345678'
+      click_button 'Sign up'
+      expect(current_path).to eq '/'
       click_link 'Add a restaurant'
       fill_in 'Name', with: 'Hawksmoor'
       click_button 'Create Restaurant'
@@ -34,6 +40,12 @@ feature 'restaurants' do
     context 'an invalid restaurant' do
       it 'does not let you submit a name that is too short' do
         visit '/restaurants'
+        click_link 'Sign up'
+        fill_in 'Email', with: 'steve@email.com'
+        fill_in 'Password', with: '12345678'
+        fill_in 'Password confirmation', with: '12345678'
+        click_button 'Sign up'
+        expect(current_path).to eq '/'
         click_link 'Add a restaurant'
         fill_in 'Name', with: 'Ha'
         click_button 'Create Restaurant'
@@ -60,6 +72,12 @@ feature 'restaurants' do
 
     scenario 'let user edit a restaurant' do
       visit '/restaurants'
+      click_link 'Sign up'
+      fill_in 'Email', with: 'steve@email.com'
+      fill_in 'Password', with: '12345678'
+      fill_in 'Password confirmation', with: '12345678'
+      click_button 'Sign up'
+      expect(current_path).to eq '/'
       click_link 'Edit Hawksmoor'
       fill_in 'Name', with: 'The Hawksmoor'
       click_button 'Update Restaurant'
@@ -73,10 +91,15 @@ feature 'restaurants' do
 
     scenario 'removes a restaurant when a user clicks a delete link' do
       visit '/restaurants'
+      click_link 'Sign up'
+      fill_in 'Email', with: 'steve@email.com'
+      fill_in 'Password', with: '12345678'
+      fill_in 'Password confirmation', with: '12345678'
+      click_button 'Sign up'
+      expect(current_path).to eq '/'
       click_link 'Delete Hawksmoor'
       expect(page).not_to have_content 'Hawksmoor'
       expect(page).to have_content 'Restaurant deleted successfully'
     end
   end
-
 end
