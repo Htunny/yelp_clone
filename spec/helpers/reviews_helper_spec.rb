@@ -11,5 +11,11 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe ReviewsHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe ReviewsHelper, :type => :helper do
+    conext '#star_rating' do
+      it 'does nothing for not a number' do
+        expect(helper.star_rating('N/A')). to eq 'N/A'
+      end
+    end
+  end
 end
