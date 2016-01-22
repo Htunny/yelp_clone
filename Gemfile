@@ -44,7 +44,7 @@ group :development, :test do
   gem 'dotenv'
   gem 'poltergeist'
   gem 'database_cleaner'
-
+  gem 'paperclip'
 end
 
 group :development do
